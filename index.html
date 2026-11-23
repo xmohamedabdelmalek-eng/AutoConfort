@@ -177,6 +177,37 @@
             text-decoration: line-through;
         }
 
+        /* Product Demo Video Section */
+        .video-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .video-section h3 {
+            font-size: 1.05rem;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+
+        .video-wrapper {
+            border-radius: 10px;
+            overflow: hidden;
+            background: #000;
+            border: 1px solid var(--border-color);
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+            display: block;
+        }
+
         /* Form Styling */
         .order-form-card {
             background: var(--card-bg);
@@ -290,6 +321,92 @@
         .advantage-text p {
             font-size: 0.8rem;
             color: var(--text-muted);
+        }
+
+        /* Customer Reviews Section */
+        .reviews-section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .reviews-section h3 {
+            font-size: 1.05rem;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 6px;
+            text-align: center;
+        }
+
+        .reviews-grid {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 6px;
+            justify-content: flex-start;
+        }
+
+        .review-card {
+            flex: 0 0 155px;
+            width: 155px;
+            scroll-snap-align: start;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #0b141a;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+
+        .review-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Floating WhatsApp Button with Motion */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #25d366;
+            color: #ffffff;
+            border-radius: 50px;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.45);
+            z-index: 999;
+            animation: whatsappBounce 2.5s ease-in-out infinite, whatsappPulse 2s infinite;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .whatsapp-float:hover {
+            background: #1ebe5d;
+            transform: scale(1.06);
+        }
+
+        .whatsapp-float i {
+            font-size: 1.5rem;
+        }
+
+        @keyframes whatsappBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        @keyframes whatsappPulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
         /* Footer */
@@ -424,6 +541,14 @@ src="https://www.facebook.com/tr?id=2356674051754179&ev=PageView&noscript=1"
             <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="orderSent()"></iframe>
         </div>
 
+        <!-- فيديو توضيحي للمنتج -->
+        <div class="video-section">
+            <h3>شاهد جودة الإسفنج وسهولة التركيب في ثوانٍ 🎥</h3>
+            <div class="video-wrapper">
+                <video src="dw st.mp4" poster="o.jpeg" autoplay muted loop playsinline controls preload="auto"></video>
+            </div>
+        </div>
+
         <!-- مميزات المنتج -->
         <div class="advantages-section">
             <h3>لماذا يحتاجه كل سائق ؟</h3>
@@ -453,6 +578,22 @@ src="https://www.facebook.com/tr?id=2356674051754179&ev=PageView&noscript=1"
             </div>
         </div>
 
+        <!-- آراء الزبناء -->
+        <div class="reviews-section">
+            <h3>آراء زبنائنا الكرام ⭐</h3>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <img src="avis 1.webp" alt="رأي زبون 1">
+                </div>
+                <div class="review-card">
+                    <img src="avis 2.webp" alt="رأي زبون 2">
+                </div>
+                <div class="review-card">
+                    <img src="AVIS 3.webp" alt="رأي زبون 3">
+                </div>
+            </div>
+        </div>
+
         <footer>
             <div class="footer-links">
                 <span onclick="alert('سياسة الاسترجاع: يمكنك إرجاع المنتوج في غضون 7 أيام في حال وجود أي مشكل تصنيع.')">سياسة الاسترجاع</span>
@@ -461,69 +602,3 @@ src="https://www.facebook.com/tr?id=2356674051754179&ev=PageView&noscript=1"
             </div>
             <p>AutoConfort © 2026 - جميع الحقوق محفوظة</p>
         </footer>
-
-    </div>
-
-    <!-- رسالة نجاح الطلب -->
-    <div id="success-modal">
-        <div class="success-content">
-            <i class="fa-solid fa-circle-check" style="font-size: 3rem; color: #16a34a; margin-bottom: 10px;"></i>
-            <h3 style="margin-bottom: 8px;">تم تسجيل طلبك بنجاح</h3>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;">سيتم الاتصال بك قريباً لتأكيد الشحن.</p>
-            <button onclick="closeModal()" style="padding: 8px 20px; background: var(--primary); border:none; border-radius: 6px; color: white; cursor: pointer; font-weight: 600;">حسناً</button>
-        </div>
-    </div>
-
-    <script>
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyEMj9Fzg5UMQRvu1h90MKZdbrys0A1jznDygPKLU2-CQDlcClf-X7Ja7fbA1ZesioJ/exec';
-        let isSending = false;
-
-        function changeImage(element) {
-            document.getElementById('activeImage').src = element.src;
-            document.querySelectorAll('.thumbnails img').forEach(img => img.classList.remove('active'));
-            element.classList.add('active');
-        }
-
-        function handleOrder() {
-            if (isSending) return false;
-
-            const phoneInput = document.getElementById('phoneNumber');
-            const phone = phoneInput.value.replace(/[\s.\-]/g, '');
-
-            if (!/^0[5-7][0-9]{8}$/.test(phone)) {
-                alert('المرجو إدخال رقم هاتف صحيح (مثال: 0612345678)');
-                return false;
-            }
-            phoneInput.value = phone;
-
-            isSending = true;
-            const btn = document.getElementById('submitBtn');
-            btn.disabled = true;
-            btn.innerHTML = 'جاري الإرسال...';
-            btn.style.opacity = '0.7';
-            return true;
-        }
-
-        function orderSent() {
-            if (!isSending) return;
-            isSending = false;
-
-            document.getElementById('success-modal').style.display = 'flex';
-            document.getElementById('fastOrderForm').reset();
-
-            const btn = document.getElementById('submitBtn');
-            btn.disabled = false;
-            btn.innerHTML = 'تأكيد الطلب الآن';
-            btn.style.opacity = '1';
-
-            if (typeof fbq === 'function') {
-                fbq('track', 'Purchase', { value: 219, currency: 'MAD' });
-            }
-        }
-
-        function closeModal() {
-            document.getElementById('success-modal').style.display = 'none';
-        }
-    </script>
-</body>
-</html>
