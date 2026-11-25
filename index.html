@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AutoConfort - مسند الرأس الطبي للسيارة</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -15,6 +15,9 @@
             --accent: #d97706;
             --text-main: #1e293b;
             --text-muted: #64748b;
+            --gold: #d4af37;
+            --gold-light: #f3e5ab;
+            --luxury-dark: #0f172a;
         }
 
         * {
@@ -271,6 +274,7 @@
         }
 
         .submit-btn:disabled {
+            background: #94a3b8;
             cursor: not-allowed;
         }
 
@@ -415,6 +419,7 @@
             padding: 20px;
             color: var(--text-muted);
             font-size: 0.8rem;
+            padding-bottom: 85px;
         }
 
         .footer-links {
@@ -435,47 +440,233 @@
             text-decoration: underline;
         }
 
-        /* Success Popup */
+        /* =========================================
+           LUXURY VIP THANK YOU PAGE MODAL
+        ========================================= */
         #success-modal {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1000;
+            inset: 0;
+            background: rgba(9, 13, 22, 0.88);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 2000;
             justify-content: center;
             align-items: center;
             padding: 15px;
+            overflow-y: auto;
         }
 
-        .success-content {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            text-align: center;
-            max-width: 350px;
+        .luxury-card {
+            background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%);
+            border: 1.5px solid rgba(212, 175, 55, 0.55);
+            border-radius: 20px;
+            max-width: 430px;
             width: 100%;
+            padding: 28px 22px;
+            text-align: center;
+            color: #f8fafc;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75), 0 0 30px rgba(212, 175, 55, 0.18);
+            animation: luxEntrance 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+            margin: auto;
+        }
+
+        @keyframes luxEntrance {
+            0% { opacity: 0; transform: translateY(25px) scale(0.95); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .lux-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            color: var(--gold-light);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 50px;
+            letter-spacing: 0.5px;
+            margin-bottom: 14px;
+        }
+
+        .lux-check-ring {
+            width: 74px;
+            height: 74px;
+            margin: 0 auto 14px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #d4af37, #f59e0b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.55);
+            animation: pulseGold 2s infinite;
+        }
+
+        .lux-check-ring i {
+            font-size: 2.2rem;
+            color: #0f172a;
+        }
+
+        @keyframes pulseGold {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6); }
+            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+
+        .luxury-card h2 {
+            font-size: 1.45rem;
+            font-weight: 800;
+            background: linear-gradient(to left, #ffffff, #f3e5ab);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
+        }
+
+        .luxury-card .sub-msg {
+            font-size: 0.88rem;
+            color: #cbd5e1;
+            margin-bottom: 18px;
+        }
+
+        /* Order Receipt Box */
+        .order-receipt {
+            background: rgba(15, 23, 42, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            padding: 14px 16px;
+            text-align: right;
+            margin-bottom: 16px;
+        }
+
+        .receipt-header {
+            font-size: 0.8rem;
+            color: var(--gold);
+            font-weight: 700;
+            border-bottom: 1px dashed rgba(212, 175, 55, 0.35);
+            padding-bottom: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-bottom: 7px;
+            gap: 10px;
+        }
+
+        .receipt-row:last-child {
+            margin-bottom: 0;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .receipt-label {
+            color: #94a3b8;
+            flex-shrink: 0;
+        }
+
+        .receipt-val {
+            color: #f8fafc;
+            font-weight: 600;
+            text-align: left;
+            word-break: break-word;
+        }
+
+        .receipt-total {
+            color: #4ade80;
+            font-size: 1.05rem;
+        }
+
+        /* 3 Steps Timeline */
+        .lux-steps {
+            display: flex;
+            justify-content: space-between;
+            gap: 6px;
+            margin-bottom: 18px;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 10px 8px;
+            border-radius: 12px;
+        }
+
+        .lux-step {
+            flex: 1;
+            font-size: 0.72rem;
+            color: #cbd5e1;
+        }
+
+        .lux-step i {
+            display: block;
+            font-size: 1rem;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        /* Action Buttons */
+        .lux-wa-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 13px;
+            background: linear-gradient(135deg, #25d366 0%, #16a34a 100%);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+            margin-bottom: 10px;
+            transition: transform 0.2s;
+        }
+
+        .lux-wa-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .lux-close-btn {
+            width: 100%;
+            padding: 10px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #94a3b8;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .lux-close-btn:hover {
+            border-color: var(--gold);
+            color: #fff;
         }
     </style>
+
     <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '2356674051754179');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=2356674051754179&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2356674051754179');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2356674051754179&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -602,3 +793,171 @@ src="https://www.facebook.com/tr?id=2356674051754179&ev=PageView&noscript=1"
             </div>
             <p>AutoConfort © 2026 - جميع الحقوق محفوظة</p>
         </footer>
+    </div>
+
+    <!-- زر الواتساب العائم -->
+    <a href="https://wa.me/212778773250?text=السلام%20عليكم،%20أريد%20الاستفسار%20عن%20مسند%20الرأس%20الطبي%20للسيارة" 
+       class="whatsapp-float" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i>
+        <span>تواصل معنا</span>
+    </a>
+
+    <!-- =========================================
+         صفحة الشكر الفاخرة (LUXURY THANK YOU PAGE)
+    ========================================= -->
+    <div id="success-modal">
+        <div class="luxury-card">
+            <div class="lux-badge">✨ طلب مؤكد بنجاح • AutoConfort VIP</div>
+            
+            <div class="lux-check-ring">
+                <i class="fas fa-check"></i>
+            </div>
+
+            <h2>شكراً لثقتك بنا، <span id="rec-first-name">زبوننا الكريم</span>!</h2>
+            <p class="sub-msg">تم تسجيل طلبك في نظامنا بنجاح. سيتصل بك فريق التأكيد في أقرب وقت لشحن طلبيتك.</p>
+
+            <!-- وصل الطلبية -->
+            <div class="order-receipt">
+                <div class="receipt-header">
+                    <span><i class="fas fa-receipt"></i> ملخص الطلبية</span>
+                    <span id="order-ref">#AC-2026</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="receipt-label">المنتوج:</span>
+                    <span class="receipt-val">مسند الرأس الطبي (قطعتين)</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="receipt-label">الاسم الكامل:</span>
+                    <span class="receipt-val" id="rec-name">-</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="receipt-label">رقم الهاتف:</span>
+                    <span class="receipt-val" dir="ltr" id="rec-phone">-</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="receipt-label">عنوان التوصيل:</span>
+                    <span class="receipt-val" id="rec-address">-</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="receipt-label">التوصيل:</span>
+                    <span class="receipt-val" style="color:#38bdf8;">مجاني 100% 🚚</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="receipt-label">المبلغ الإجمالي:</span>
+                    <span class="receipt-val receipt-total">219 درهم (عند الاستلام)</span>
+                </div>
+            </div>
+
+            <!-- مراحل التوصيل -->
+            <div class="lux-steps">
+                <div class="lux-step">
+                    <i class="fas fa-headset"></i>
+                    <span>1. اتصال التأكيد</span>
+                </div>
+                <div class="lux-step">
+                    <i class="fas fa-truck-fast"></i>
+                    <span>2. شحن سريع 48س</span>
+                </div>
+                <div class="lux-step">
+                    <i class="fas fa-hand-holding-dollar"></i>
+                    <span>3. الدفع عند الاستلام</span>
+                </div>
+            </div>
+
+            <!-- زر تأكيد سريع عبر واتساب -->
+            <a id="lux-wa-confirm" href="#" target="_blank" rel="noopener" class="lux-wa-btn">
+                <i class="fab fa-whatsapp" style="font-size:1.3rem;"></i>
+                <span>تسريع التأكيد عبر الواتساب</span>
+            </a>
+
+            <button class="lux-close-btn" onclick="closeModal()">العودة إلى الصفحة</button>
+        </div>
+    </div>
+
+    <script>
+        var submitted = false;
+        var savedOrder = { name: '', phone: '', address: '' };
+
+        function changeImage(element) {
+            document.getElementById('activeImage').src = element.src;
+            var thumbs = document.querySelectorAll('.thumbnails img');
+            thumbs.forEach(function(img) {
+                img.classList.remove('active');
+            });
+            element.classList.add('active');
+        }
+
+        function handleOrder() {
+            // حفظ معلومات الزبون لعرضها في صفحة الشكر الفاخرة
+            savedOrder.name = document.getElementById('fullName').value.trim();
+            savedOrder.phone = document.getElementById('phoneNumber').value.trim();
+            savedOrder.address = document.getElementById('address').value.trim();
+
+            var btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.innerText = 'جاري تسجيل طلبك...';
+            submitted = true;
+
+            setTimeout(function() {
+                if (submitted) {
+                    showThankYou();
+                }
+            }, 1800);
+
+            return true;
+        }
+
+        function orderSent() {
+            if (submitted) {
+                showThankYou();
+            }
+        }
+
+        function showThankYou() {
+            submitted = false;
+
+            // تعبئة بيانات الزبون داخل صفحة الشكر
+            var firstName = savedOrder.name.split(' ')[0] || 'زبوننا الكريم';
+            document.getElementById('rec-first-name').innerText = firstName;
+            document.getElementById('rec-name').innerText = savedOrder.name;
+            document.getElementById('rec-phone').innerText = savedOrder.phone;
+            document.getElementById('rec-address').innerText = savedOrder.address;
+
+            // توليد رقم طلب عشوائي أنيق
+            var randomRef = '#AC-' + Math.floor(1000 + Math.random() * 9000);
+            document.getElementById('order-ref').innerText = randomRef;
+
+            // تجهيز رابط الواتساب بمعلومات الزبون أوتوماتيكياً
+            var waText = "السلام عليكم AutoConfort، قمت بطلب مسند الرأس الطبي (219 درهم).\n" +
+                         "• الاسم: " + savedOrder.name + "\n" +
+                         "• الهاتف: " + savedOrder.phone + "\n" +
+                         "• العنوان: " + savedOrder.address + "\n" +
+                         "• رقم الطلب: " + randomRef;
+            document.getElementById('lux-wa-confirm').href = "https://wa.me/212778773250?text=" + encodeURIComponent(waText);
+
+            // إظهار صفحة الشكر
+            document.getElementById('success-modal').style.display = 'flex';
+
+            // إعادة تهيئة الفورمولير
+            document.getElementById('fastOrderForm').reset();
+            var btn = document.getElementById('submitBtn');
+            btn.disabled = false;
+            btn.innerText = 'تأكيد الطلب الآن';
+
+            // إرسال حدث Purchase إلى Meta Pixel
+            if (typeof fbq === 'function') {
+                fbq('track', 'Purchase', {
+                    value: 219,
+                    currency: 'MAD',
+                    content_name: 'مسند الرأس الطبي للسيارة'
+                });
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('success-modal').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
